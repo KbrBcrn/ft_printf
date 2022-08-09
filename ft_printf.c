@@ -6,7 +6,7 @@
 /*   By: kbeceren <kbeceren@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 19:51:57 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/08/09 20:39:37 by kbeceren         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:40:10 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_printf(const char *format, ...)
 {
 	// Declaring pointer to the
-   		// argument list
+   	// argument list
 	va_list	args;
 	int		i;
 	int		count;
