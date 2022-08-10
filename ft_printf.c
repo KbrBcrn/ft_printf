@@ -43,7 +43,7 @@ int	ft_printf(const char *str, ...)
 	int		i;
 
 	// Initializing argument to the
-    // list pointer
+   	// list pointer
 	va_start(args, str);
 	count = 0;
 	i = 0;
@@ -52,7 +52,7 @@ int	ft_printf(const char *str, ...)
 		if (str[i] == '%')
 		{
 			// Accessing current variable
-        	// and pointing to next one
+        		// and pointing to next one
 			count += ft_formats(args, str[i + 1]);
 			i++;
 		}
