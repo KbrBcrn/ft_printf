@@ -6,7 +6,7 @@
 /*   By: kbeceren <kubraabeceren>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:17:53 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/08/10 23:01:47 by kbeceren         ###   ########.fr       */
+/*   Updated: 2022/08/11 10:37:40 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	ft_formats(va_list args, const char format)
 {
-	int	count;
+	int	len;
 
-	count = 0;
+	len = 0;
 	if (format == 'c')
-		count += ft_putchar(va_arg(args, int));
+		len += ft_putchar(va_arg(args, int));
 	else if (format == 's')
-		count += ft_printstr(va_arg(args, char *));
+		len += ft_printstr(va_arg(args, char *));
 	else if (format == 'p')
-		count += ft_printptr(va_arg(args, unsigned long long));
+		len += ft_printptr(va_arg(args, unsigned long long));
 	else if (format == 'd' || format == 'i')
-		count += ft_printnbr(va_arg(args, int));
+		len += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
-		count += ft_print_unsigned(va_arg(args, unsigned int));
+		len += ft_print_unsigned(va_arg(args, unsigned int));
 	else if (format == 'x' || format == 'X')
-		count += ft_print_hexa(va_arg(args, unsigned int), format);
+		len += ft_print_hexa(va_arg(args, unsigned int), format);
 	else if (format == '%')
-		count += ft_putchar('%');
-	return (count);
+		len += ft_putchar('%');
+	return (len);
 }
 
 int	ft_printf(const char *str, ...)
@@ -39,13 +39,13 @@ int	ft_printf(const char *str, ...)
 	// Declaring pointer to the
    	// argument list
 	va_list	args;
-	int		count;
+	int		len;
 	int		i;
 
 	// Initializing argument to the
     // list pointer
 	va_start(args, str);
-	count = 0;
+	len = 0;
 	i = 0;
 	while (str && str[i])
 	{
@@ -53,14 +53,14 @@ int	ft_printf(const char *str, ...)
 		{
 			// Accessing current variable
         	// and pointing to next one
-			count += ft_formats(args, str[i + 1]);
+			len += ft_formats(args, str[i + 1]);
 			i++;
 		}
 		else
-			count += ft_putchar(str[i]);
+			len += ft_putchar(str[i]);
 		i++;
 	}
 	// Ending argument list traversal
 	va_end(args);
-	return (count);
+	return (len);
 }
