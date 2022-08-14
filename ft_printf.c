@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbeceren <kubraabeceren>                   +#+  +:+       +#+        */
+/*   By: kbeceren <kbeceren@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:17:53 by kbeceren          #+#    #+#             */
-/*   Updated: 2022/08/11 10:37:40 by kbeceren         ###   ########.fr       */
+/*   Updated: 2022/08/14 12:45:18 by kbeceren         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,10 @@ int	ft_formats(va_list args, const char format)
 
 int	ft_printf(const char *str, ...)
 {
-	// Declaring pointer to the
-   	// argument list
 	va_list	args;
 	int		len;
 	int		i;
 
-	// Initializing argument to the
-    // list pointer
 	va_start(args, str);
 	len = 0;
 	i = 0;
@@ -51,8 +47,6 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			// Accessing current variable
-        	// and pointing to next one
 			len += ft_formats(args, str[i + 1]);
 			i++;
 		}
@@ -60,7 +54,6 @@ int	ft_printf(const char *str, ...)
 			len += ft_putchar(str[i]);
 		i++;
 	}
-	// Ending argument list traversal
 	va_end(args);
 	return (len);
 }
